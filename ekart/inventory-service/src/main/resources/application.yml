@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    function:
+      definition: updateInventory
+    stream:
+      bindings:
+        updateInventory-out-0:
+          destination: update-order-status
+          
+        updateInventory-in-0:
+          destination: update-inventory
+          group: ${spring.application.name}
+      kafka:
+        binder:
+          brokers:
+            - localhost:9092
